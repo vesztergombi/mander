@@ -14,21 +14,25 @@ const fetchParams = {
 
 
 const TwoPanelView = () => {
-    const [dir, updateDir] = useState([])
+
+    const [dirContent, updateDirContent] = useState([]);
+    const [dirPath, updateDirPath] = useState('directory placeholder');
+
     const getRemoteList = () => {
             fetch('/ls/', fetchParams)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
-                    updateDir(data)
+                    updateDirContent(data['directory_content']);
+                    updateDirPath(data['directory_path']);
                 })
                 .catch(error => console.error(error));
         };
     useEffect(getRemoteList, []);
 
     return <div className={style['two-panel-container']}>
-        <DirectoryPanel dir={dir}/>
-        <DirectoryPanel dir={dir}/>
+        <DirectoryPanel dir={dirContent} path={dirPath}/>
+        <DirectoryPanel dir={dirContent} path={dirPath}/>
     </div>
 }
 
