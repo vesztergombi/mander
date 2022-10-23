@@ -1,0 +1,11 @@
+
+.panel {
+    background-color: teal;
+    max-height: 30rem;
+    overflow-y: auto;
+}
+
+.panel ul {
+    list-style: none;
+    text-align: left;
+}
