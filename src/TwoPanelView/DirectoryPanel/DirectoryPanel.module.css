@@ -6,7 +6,7 @@
 .panel ul {
     list-style: none;
     text-align: left;
-    max-height: 30rem;
+    height: 30rem;
     overflow-y: auto;
 }
 
