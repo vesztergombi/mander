@@ -1,7 +1,9 @@
 import {useEffect, useState} from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import DirectoryPanel from "./DirectoryPanel/DirectoryPanel.jsx";
-import style from './TwoPanelView.module.css'
+import style from './TwoPanelView.module.css';
 import { toSortedViewModel, DirectoryModel } from "./directoryModel.js";
+import {decrement, increment} from "./DualPanelSlice.js";
 
 
 const fetchParams = (dir_path = '') =>  ({
@@ -40,6 +42,8 @@ const TwoPanelView = () => {
         if (key === 'j') setSelectionIndex((selectionIndex + 1) % dirContent.length)
     });
     useEffect(getRemoteList, []);
+    const count = useSelector((state) => state.dualPanel.value);
+    const dispatch = useDispatch();
 
     return <div className={style['two-panel-container']} tabIndex={0} onKeyDown={ e => keyHandler(e)}>
         <DirectoryPanel
@@ -56,6 +60,13 @@ const TwoPanelView = () => {
             dir={dirContent}
             path={dirPath}
             load={getRemoteList}/>
+        <span>{count}</span>
+        <button onClick={() => dispatch(increment())}>
+            Increment
+        </button>
+        <button onClick={() => dispatch(decrement())}>
+            Decrement
+        </button>
     </div>
 }
 
