@@ -1,6 +1,7 @@
 
 .panel {
     background-color: teal;
+    overflow-wrap: anywhere;
 }
 
 .panel ul {

@@ -60,13 +60,6 @@ const TwoPanelView = () => {
             dir={dirContent}
             path={dirPath}
             load={getRemoteList}/>
-        <span>{count}</span>
-        <button onClick={() => dispatch(increment())}>
-            Increment
-        </button>
-        <button onClick={() => dispatch(decrement())}>
-            Decrement
-        </button>
     </div>
 }
 
