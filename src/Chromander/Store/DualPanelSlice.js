@@ -1,37 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+
+const createInitialPanel = () => ({
+  fpath: ''
+})
+
 export const dualPanelSlice = createSlice({
     name: 'dualPanel',
     initialState: {
-        panelA: {},
-        panelB: {},
-        value: 0,
+      panels: [ createInitialPanel(), createInitialPanel()]
     },
     reducers: {
-        updateDirectoryBufferA: (state, action) => {
-            state.panelA = action.payload
-        },
-        updateDirectoryBufferB: (state, action) => {
-            state.panelB = action.payload
-        },
-        increment: (state) => {
-            state.value += 1;
-        },
-        decrement: (state) => {
-            state.value -= 1;
-        },
-        incrementByAmount: (state, action) => {
-            state.value += action.payload;
-        },
+        updatePanelPath: (state, action) => {
+          const {panelId, fpath} = action.payload
+          state.panels[panelId].fpath = fpath
+        }
     },
 });
 
+export const getPath = panelId => state => state.dualPanel.panels[panelId].fpath
+
 export const { 
-    updateDirectoryBufferA,
-    updateDirectoryBufferB,
-    increment, 
-    decrement, 
-    incrementByAmount 
+    updatePanelPath
 } = dualPanelSlice.actions;
 
 export default dualPanelSlice.reducer;

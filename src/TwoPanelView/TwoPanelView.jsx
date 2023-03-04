@@ -41,6 +41,7 @@ const TwoPanelView = () => {
 
     return <div className={style['two-panel-container']} tabIndex={0} onKeyDown={ e => keyHandler(e)}>
         <DirectoryPanel
+            panelId={0}
             selectionIndex={selectionIndex}
             showHidden={showHidden}
             dirModel={model}
@@ -48,6 +49,7 @@ const TwoPanelView = () => {
             path={dirPath}
             load={getRemoteList}/>
         <DirectoryPanel
+            panelId={1}
             selectionIndex={selectionIndex}
             showHidden={showHidden}
             dirModel={model}
