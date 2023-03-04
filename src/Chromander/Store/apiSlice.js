@@ -7,12 +7,12 @@ export const apiSlice = createApi({
     tagTypes: ['Post'],
     endpoints: (builder) => ({
       getDir: builder.query ({
-        query: (args) => ({
+        query: ({ fpath }) => ({
           url: '/',
-          params: {...args}
+          params: {fpath: encodeURI(fpath)}
         })
       })
     })
 })
 
-export const { useGetDirQuery } = apiSlice
+export const { useGetDirQuery, useLazyGetDirQuery} = apiSlice
