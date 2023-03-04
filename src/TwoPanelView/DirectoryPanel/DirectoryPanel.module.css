@@ -14,3 +14,7 @@
 .panel ul li:hover {
     background-color: steelblue;
 }
+
+.selected {
+  background-color: steelblue;
+}

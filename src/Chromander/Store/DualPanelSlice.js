@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
 const createInitialPanel = () => ({
-  fpath: ''
+  fpath: '',
+  lastSelection: null,
 })
 
 export const dualPanelSlice = createSlice({
@@ -14,6 +15,10 @@ export const dualPanelSlice = createSlice({
     updatePanelPath: (state, action) => {
       const {panelId, fpath} = action.payload
       state.panels[panelId].fpath = fpath
+    },
+    setLastSelection: (state, action) => {
+      const { panelId, fpath } = action.payload
+      state.panels[panelId].lastSelection = fpath
     }
   }
 });
@@ -21,7 +26,8 @@ export const dualPanelSlice = createSlice({
 export const getPath = panelId => state => state.dualPanel.panels[panelId].fpath
 
 export const { 
-  updatePanelPath
+  updatePanelPath,
+  setLastSelection
 } = dualPanelSlice.actions;
 
 export default dualPanelSlice.reducer;
