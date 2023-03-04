@@ -1,7 +1,6 @@
 
 export class DirectoryModel {
     constructor(dto, showHidden = true) {
-        console.log(`Hello from dir model dto=${dto}`)
         this.rawDto = dto;
         this.filteredView = {};
         this.selection = null;
