@@ -5,13 +5,6 @@ import {useState} from "react";
 const DirectoryPanel = (props) => {
     const [selection, setSelection] = useState('placeholder');
     const entryList = () => {
-        // const filtered_dir = (props.showHidden) ?
-        //     props.dir :
-        //     props.dir.filter(e => e.displayName === '..' || !e.displayName.startsWith('.'));
-
-        // return filtered_dir.map(entry =>
-        // console.log('Csá');
-        // console.log(props.dirModel.getView());
         return props.dirModel.getView().map(entry =>
             <li key={entry.path}
                 onMouseEnter={() => setSelection(entry.path)}

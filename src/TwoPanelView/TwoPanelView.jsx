@@ -1,10 +1,10 @@
-import {useEffect, useState} from "react";
-import { useSelector, useDispatch } from 'react-redux';
 import DirectoryPanel from "./DirectoryPanel/DirectoryPanel.jsx";
 import style from './TwoPanelView.module.css';
+import { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { toSortedViewModel, DirectoryModel } from "./directoryModel.js";
-import {decrement, increment} from "./DualPanelSlice.js";
-
+// import {decrement, increment, useGetPostsQuery} from "./DualPanelSlice.js";
+import { useGetDirQuery } from '../Chromander/Store/apiSlice'
 
 const fetchParams = (dir_path = '') =>  ({
     method: 'POST',
@@ -23,6 +23,8 @@ const TwoPanelView = () => {
     const [selectionIndex, setSelectionIndex] = useState(0);
     const [model, updateModel] = useState(new DirectoryModel());
 
+    const a = useGetDirQuery({fpath: 'projects'})
+    console.log('Get query from RTK toolkit', a)
     const getRemoteList = (dir_path = '') => {
             fetch('/ls/', fetchParams(dir_path))
                 .then(response => response.json())

@@ -8,6 +8,12 @@ export const dualPanelSlice = createSlice({
         value: 0,
     },
     reducers: {
+        updateDirectoryBufferA: (state, action) => {
+            state.panelA = action.payload
+        },
+        updateDirectoryBufferB: (state, action) => {
+            state.panelB = action.payload
+        },
         increment: (state) => {
             state.value += 1;
         },
@@ -20,6 +26,12 @@ export const dualPanelSlice = createSlice({
     },
 });
 
-export const { increment, decrement, incrementByAmount } = dualPanelSlice.actions;
+export const { 
+    updateDirectoryBufferA,
+    updateDirectoryBufferB,
+    increment, 
+    decrement, 
+    incrementByAmount 
+} = dualPanelSlice.actions;
 
 export default dualPanelSlice.reducer;
