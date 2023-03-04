@@ -1,23 +1,21 @@
 import styles from './DirectoryPanel.module.css'
 import {useState} from "react";
-import { useLazyGetDirQuery } from '../../Chromander/Store/apiSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPath, updatePanelPath } from '../../Chromander/Store/DualPanelSlice';
+import { useGetDirQuery } from '../../Chromander/Store/apiSlice';
 
 const DirectoryPanel = (props) => {
   const id = props.panelId
   const fpath = useSelector(getPath(id))
-  console.log('My current path is', fpath)
-  console.log(`panel[${id}].fpath=${fpath}`)
 
   const [selection, setSelection] = useState('placeholder');
-  const [trigger, {data} ] = useLazyGetDirQuery()
   const dispatch = useDispatch()
   const dualipa_load = (selection) => {
-    props.load(selection)
-    // trigger({ fpath: selection })
-    dispatch(updatePanelPath({ panelId: id, fpath: selection }))
+    // props.load(selection)
+    dispatch(updatePanelPath({ panelId: id, fpath: selection || ''}))
   }
+  const { data: directory_dto } = useGetDirQuery({ fpath })
+  // console.log(directory_dto)
   const entryList = () => {
     return props.dirModel.getView().map(entry =>
       <li key={entry.path}

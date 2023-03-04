@@ -15,4 +15,4 @@ export const dirExplorerSlice = createApi({
     })
 })
 
-export const { useGetDirQuery, useLazyGetDirQuery} = dirExplorerSlice
+export const { useGetDirQuery } = dirExplorerSlice
