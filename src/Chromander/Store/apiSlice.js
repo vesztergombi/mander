@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 
 
-export const apiSlice = createApi({
+export const dirExplorerSlice = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: 'dir'}),
     tagTypes: ['Post'],
@@ -15,4 +15,4 @@ export const apiSlice = createApi({
     })
 })
 
-export const { useGetDirQuery, useLazyGetDirQuery} = apiSlice
+export const { useGetDirQuery, useLazyGetDirQuery} = dirExplorerSlice
