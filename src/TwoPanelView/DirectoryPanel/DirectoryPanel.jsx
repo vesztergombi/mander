@@ -24,15 +24,11 @@ const DirectoryPanel = (props) => {
   const keyHandler = ({key}, model) => {
     if (key === 'H') console.log(`key=${key}`)
     if (key === 'k') {
-      console.log(`key=${key} selection=${selection}`)
       const next = model.getPrev(selection)
-      console.log(next)
       setSelection(next)
     }
     if (key === 'j') {
-      console.log(`key=${key} selection=${selection}`)
       const next = model.getNext(selection)
-      console.log(next)
       setSelection(next)
     }
   };
